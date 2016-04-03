@@ -12,11 +12,10 @@ angular.module('routerApp')
       if(!form.$valid){
         return;
       }
-      $auth.login($scope.user,{url:'http://10.0.0.139/login'})
+      $auth.login($scope.user,{url:'http://192.168.1.4/login'})
         .then(function(response) {
-          console.log(response);
           localStorageService.set('loginData', response.data);
-          $state.go($rootScope.fromState,{data:$rootScope.fromParams.data});
+          $state.go('home');
           console.log('You have successfully signed in!');
         })
         .catch(function(error) {

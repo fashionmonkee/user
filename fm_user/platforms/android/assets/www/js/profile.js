@@ -1,8 +1,10 @@
 'use strict';
 
 
-angular.module('routerApp').controller('profileCtrl', function($scope,$state,$api,commonData) {
-  	$scope.moveState=function(state){
+angular.module('routerApp').controller('profileCtrl', function($scope,$state,$api,localStorageService) {
+  	$scope.loginData=localStorageService.get('loginData');
+
+    $scope.moveState=function(state){
   		$('.button-collapse').sideNav('hide');
   		$state.go(state);
   	};
@@ -33,7 +35,7 @@ angular.module('routerApp').controller('profileCtrl', function($scope,$state,$ap
 
   	$scope.getItems=function(item){
   		var getItems=new $api(item);
-  		getItems.get(7).then(function(response) {
+  		getItems.get($scope.loginData.id).then(function(response) {
   			$scope.user=response.data;
   			console.log($scope.user);
 		});

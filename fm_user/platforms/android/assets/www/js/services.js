@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('routerApp').service('$api', function($http, $q) {
-  var baseUrl="http://10.0.0.139/";
+  var baseUrl="http://192.168.1.4/";
   var currentdate = new Date(); 
   var datetime = "Last Sync: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
@@ -19,6 +19,10 @@ angular.module('routerApp').service('$api', function($http, $q) {
 
   this.get = function(id) {
     return $http.get(_endpointUrl+'/'+id, {cache:false});
+  };
+
+  this.delete = function() {
+    return $http.delete(_endpointUrl, {cache:false});
   };
 
   this.save = function(object,id) {

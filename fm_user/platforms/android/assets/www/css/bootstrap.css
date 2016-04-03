@@ -6111,7 +6111,7 @@ a.thumbnail:hover {
 }
 
 .media-body {
-    width: 10000px
+    /*width: 10000px*/
 }
 
 .media-object {
@@ -6131,7 +6131,7 @@ a.thumbnail:hover {
 .media-body,
 .media-left,
 .media-right {
-    display: table-cell;
+    /*display: table-cell;*/
     vertical-align: top
 }
 

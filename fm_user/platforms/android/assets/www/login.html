@@ -1,7 +1,7 @@
  <nav class="red" role="navigation">
         <div class="nav-wrapper container">
           <a id="logo-container" href="" class="brand-logo">Login</a>
-          <a ng-click="moveState(fromState.name)" ><i class="large material-icons">arrow_back</i></a>
+          <a href="javascript:history.back()" ><i class="large material-icons">arrow_back</i></a>
         </div>
   </nav>
 
@@ -35,8 +35,11 @@
       <button class="btn btn-block ripple-effect"  type="submit" name="Submit" alt="sign in">Sign in</button>  
 	  </div>
     <p class="text-center text-muted">
-            <small>Don't have an account yet? <a href="#/signup">Sign up</a></small>
-          </p>
+            <small>Don't have an account yet?</small> <a href="#/signup">Sign up</a>
+    </p>
+    <p class="text-center text-muted">
+            <a href="#/forgotPassword">Forgot Password</a>
+    </p>
     </div>
   </form>
 </div>

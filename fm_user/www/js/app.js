@@ -70,7 +70,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
           .state('forgotPassword', {
             url: '/forgotPassword',
             templateUrl: 'forgotPassword.html',
-            controller:'signupCtrl'
+            controller:'forgotPasswordCtrl'
         })
          .state('logout', {
             url: '/logout',

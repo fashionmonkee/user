@@ -42,12 +42,12 @@ angular.module('routerApp').controller('listCtrl', function($scope,$api,$state) 
      
 
     $scope.share=function(shop){
-      var message=shop.description;
-      var subject=shop.name;
+      var message=shop.name+','+shop.description;
       var image=shop.banner_image;
-      var link="";
-      window.plugins.socialsharing.share(message,subject,image,link);
+      var link='';
+      window.plugins.socialsharing.share(message,null,'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
     };
+
     $scope.search=function(){
       $scope.getItems("shops?name="+$scope.searchData);
     }

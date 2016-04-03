@@ -2,9 +2,9 @@
 
 
 angular.module('routerApp')
-  .controller('mapCtrl', function($scope,$state,$api) {
+  .controller('mapCtrl', function($scope,$state,$api,$rootScope) {
   	$scope.moveState=function(state){
-  		$state.go(state);
+  		$state.go($rootScope.fromState.name,{data:$rootScope.fromParams.data});
   	};
     $scope.shop=$state.params.data;
     $scope.locationPlace={};

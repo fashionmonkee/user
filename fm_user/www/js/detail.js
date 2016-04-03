@@ -11,10 +11,12 @@ angular.module('routerApp')
     $scope.starRating='';
     $scope.loginData=localStorageService.get('loginData');
     console.log($scope.loginData);
+    $scope.shopId=$state.params.data;
+    console.log($state.params.data);
  
 
-  	$scope.moveState=function(state){
-  		$state.go(state);
+  	$scope.moveState=function(state,data){
+      $state.go(state,{data:data});
   	};
 
 
@@ -31,13 +33,13 @@ angular.module('routerApp')
       if(flag === 'edit'){
         api.save({id:$scope.editComment.id,reviews:$scope.editComment.reviews,shop_id:$scope.shop.id,user_id:$scope.loginData.id}).then(function(response){
         $scope.editComment='';
-        $scope.getReviews("reviews?shop_id=1");
+        $scope.getReviews("reviews?shop_id="+$scope.shop.id);
         $scope.closeModal('comment-modal');
       });
       }else{
         api.save({id:null,reviews:$scope.comment,shop_id:$scope.shop.id,user_id:$scope.loginData.id}).then(function(response){
         $scope.comment='';
-        $scope.getReviews("reviews?shop_id=1");
+        $scope.getReviews("reviews?shop_id="+$scope.shop.id);
         $scope.closeModal('comment-modal');
       });
       }      
@@ -46,7 +48,7 @@ angular.module('routerApp')
     $scope.deleteReview=function(id){
       var api=new $api('reviews?id='+id);
       api.delete().then(function(response){
-        $scope.getReviews("reviews?shop_id=1");
+        $scope.getReviews("reviews?shop_id="+$scope.shop.id);
       });
     };
 
@@ -92,16 +94,15 @@ angular.module('routerApp')
      
 
     $scope.share=function(shop){
-      var message=shop.description;
-      var subject=shop.name;
-      var image=shop.banner;
-      var link="";
-      window.plugins.socialsharing.share(message,subject,image,link);
+      var message=shop.name+','+shop.description;
+      var image=shop.banner_image;
+      var link='';
+      window.plugins.socialsharing.share(message,null,'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
     };
 
   	$scope.getShop=function(data){
   		var getShop=new $api(data);
-  		getShop.get('1').then(function(response) {
+  		getShop.get($state.params.data).then(function(response) {
   			$scope.shop=response.data;
         
 		});
@@ -117,7 +118,7 @@ angular.module('routerApp')
         $scope.mainCategory=cat;
     }
   	$scope.getShop("shops");
-    $scope.getReviews("reviews?shop_id=1");
+    $scope.getReviews("reviews?shop_id="+$state.params.data);
     
   	
 

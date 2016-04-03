@@ -11,7 +11,7 @@ angular.module('routerApp')
       if(!form.$valid){
         return;
       }
-      $auth.signup($scope.user,{url:'http://10.0.0.139/register'}).then(function(response) {
+      $auth.signup($scope.user,{url:'http://192.168.1.4/register'}).then(function(response) {
           localStorageService.set('loginData', response.data);
           $auth.setToken(response);
           $state.go('home');
