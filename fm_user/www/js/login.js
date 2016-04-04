@@ -12,7 +12,7 @@ angular.module('routerApp')
       if(!form.$valid){
         return;
       }
-      $auth.login($scope.user,{url:'http://localhost/login'})
+      $auth.login($scope.user,{url:'http://10.0.0.139/login'})
         .then(function(response) {
           localStorageService.set('loginData', response.data);
           $state.go('home');

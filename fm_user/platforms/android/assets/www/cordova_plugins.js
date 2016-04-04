@@ -3,13 +3,11 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-whitelist/whitelist.js",
         "id": "cordova-plugin-whitelist.whitelist",
-        "pluginId": "cordova-plugin-whitelist",
         "runs": true
     },
     {
         "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
         "id": "cordova-plugin-x-socialsharing.SocialSharing",
-        "pluginId": "cordova-plugin-x-socialsharing",
         "clobbers": [
             "window.plugins.socialsharing"
         ]
@@ -17,7 +15,6 @@ module.exports = [
     {
         "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
         "id": "mx.ferreyra.callnumber.CallNumber",
-        "pluginId": "mx.ferreyra.callnumber",
         "clobbers": [
             "call"
         ]

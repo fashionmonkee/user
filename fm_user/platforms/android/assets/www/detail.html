@@ -11,7 +11,8 @@
           <img ng-src="{{shop.banner_image}}">
       </div>
       <div class="card-content">
-        <span class="card-title">{{shop.name}}</span><span class="rating-box right">{{shop.ratings}}</span>
+        <span class="card-title">{{shop.name}}</span>
+        <span class="rating-box right">{{shop.ratings}}</span>
         <p>{{shop.address.address1}}{{","+shop.address.city}}{{"-"+shop.address.pin}}</p>
       </div>
       <div class="card-action" style="text-align:center;">
@@ -39,12 +40,18 @@
 <div id="general" class="detail-row">
 <div class="col s12">
 <section>
-<h4 class="subheaders">Photos</h4>
+<h4 class="subheaders">Description</h4>
 <div class="container-fluid">
     <div class="row no-gutter list-row">
+        <p>{{shop.description}}</p>
+    </div>
+</div>
+<h4 class="subheaders">Photos</h4>
+<div class="container-fluid">
+    <div class="row list-row">
         <div class="col-xs-4 col-sm-4 col-lg-4" ng-repeat="img in shop.images track by $index">
-            <a href="#" >
-                <img ng-src="{{img.image_url}}" class="img-responsive">
+            <a href="" >
+                <img ng-src="{{img.image_url}}" class="materialboxed responsive-img " mat-zoom>
             </a>
         </div>
     </div>

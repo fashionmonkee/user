@@ -6,14 +6,14 @@ angular.module('routerApp')
   	$scope.moveState=function(state){
   		$state.go($rootScope.fromState.name,{data:$rootScope.fromParams.data});
   	};
-    $scope.shop=$state.params.data;
+
     $scope.locationPlace={};
     $scope.map = {
           center: {
             latitude: $state.params.data.address.latitude,
             longitude: $state.params.data.address.longitude
           },
-          zoom: 10,
+          zoom: 15,
         };
         $scope.locationPlace.coords = {
         'latitude': $state.params.data.address.latitude,
