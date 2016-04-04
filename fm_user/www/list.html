@@ -68,7 +68,7 @@
 
 <div class="list-row row">
   <div class="col s12 m7" ng-repeat="shop in shops track by shop.id">
-    <div class="card small" ng-click="moveState('detail',shop.id)">
+    <div class="card small" ng-click="gotoDetail('detail',shop.id)">
       <div class="card-image">
           <img ng-src="{{shop.banner_image}}">
       </div>

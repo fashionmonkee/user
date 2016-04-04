@@ -2,7 +2,7 @@
 
 
 angular.module('routerApp')
-  .controller('detailCtrl', function($scope,$api,$state,localStorageService) {
+  .controller('detailCtrl', function($scope,$api,$state,localStorageService,$stateParams) {
     $scope.starRating=0;
     $scope.comment='';
     $scope.editComment='';
@@ -10,9 +10,8 @@ angular.module('routerApp')
     $scope.mainCategory=$scope.mainCategories[0];
     $scope.starRating='';
     $scope.loginData=localStorageService.get('loginData');
-    console.log($scope.loginData);
-    $scope.shopId=$state.params.data;
-    console.log($state.params.data);
+    $scope.shopId=$stateParams.id;
+
  
 
   	$scope.moveState=function(state,data){
@@ -102,7 +101,7 @@ angular.module('routerApp')
 
   	$scope.getShop=function(data){
   		var getShop=new $api(data);
-  		getShop.get($state.params.data).then(function(response) {
+  		getShop.get($stateParams.id).then(function(response) {
   			$scope.shop=response.data;
         
 		});
@@ -118,7 +117,7 @@ angular.module('routerApp')
         $scope.mainCategory=cat;
     }
   	$scope.getShop("shops");
-    $scope.getReviews("reviews?shop_id="+$state.params.data);
+    $scope.getReviews("reviews?shop_id="+$stateParams.id);
     
   	
 
@@ -188,3 +187,14 @@ angular.module('routerApp')
         }
     };
 });
+
+angular.module('routerApp').directive('matZoom', function() {
+return {
+    // Restrict it to be an attribute in this case
+    restrict: 'A',
+    // responsible for registering DOM listeners as well as updating the DOM
+    link: function() {
+        $('.materialboxed').materialbox();
+    }
+   };
+ });

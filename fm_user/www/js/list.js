@@ -1,11 +1,14 @@
 'use strict';
 
-angular.module('routerApp').controller('listCtrl', function($scope,$api,$state) {
+angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$location) {
     
     $scope.filterData={areas:'',categories:'',sortBy:''};
     $scope.searchData='';
     $scope.moveState=function(state,id){
       $state.go(state,{data:id});
+    };
+    $scope.gotoDetail=function(url,id){
+       $location.path('/' + url + '/'+id);
     };
 
     $scope.getAreas=function(){

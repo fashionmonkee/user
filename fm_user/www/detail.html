@@ -48,10 +48,10 @@
 </div>
 <h4 class="subheaders">Photos</h4>
 <div class="container-fluid">
-    <div class="row no-gutter list-row">
+    <div class="row list-row">
         <div class="col-xs-4 col-sm-4 col-lg-4" ng-repeat="img in shop.images track by $index">
-            <a href="#" >
-                <img ng-src="{{img.image_url}}" class="img-responsive">
+            <a href="" >
+                <img ng-src="{{img.image_url}}" class="materialboxed responsive-img " mat-zoom>
             </a>
         </div>
     </div>
