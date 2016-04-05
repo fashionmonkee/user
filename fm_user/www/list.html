@@ -56,8 +56,14 @@
               </div>
             </div>
         </div>
-          
-    <div class="col s12"> 
+      <div id="preloader_1" ng-show="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>    
+    <div class="col s12" ng-show="!loading"> 
          <div class="col s10" >
             <div class="container-3">
                 <span class="icon"><i class="small material-icons">search</i></span>
@@ -66,7 +72,7 @@
         </div>
         </div>
 
-<div class="list-row row">
+<div class="list-row row" ng-show="!loading">
   <div class="col s12 m7" ng-repeat="shop in shops track by shop.id">
     <div class="card small" ng-click="gotoDetail('detail',shop.id)">
       <div class="card-image">
@@ -157,4 +163,6 @@
 .filter-content{
   padding:5px;
 }
+
+
 </style>

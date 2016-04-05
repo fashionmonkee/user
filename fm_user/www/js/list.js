@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$location) {
-    
+    $scope.loading=true;
     $scope.filterData={areas:'',categories:'',sortBy:''};
     $scope.searchData='';
     $scope.moveState=function(state,id){
@@ -24,6 +24,7 @@ angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$
       var getItems=new $api(item);
       getItems.list().then(function(response) {
         $scope.shops=response.data;
+        $scope.loading=false;
         console.log($scope.shops);
     });
     };

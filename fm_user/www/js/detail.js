@@ -3,6 +3,7 @@
 
 angular.module('routerApp')
   .controller('detailCtrl', function($scope,$api,$state,localStorageService,$stateParams) {
+    $scope.loading=true;
     $scope.starRating=0;
     $scope.comment='';
     $scope.editComment='';
@@ -102,6 +103,7 @@ angular.module('routerApp')
   	$scope.getShop=function(data){
   		var getShop=new $api(data);
   		getShop.get($stateParams.id).then(function(response) {
+        $scope.loading=false;
   			$scope.shop=response.data;
         
 		});

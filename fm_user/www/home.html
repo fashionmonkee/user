@@ -21,63 +21,79 @@
           <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
   </nav>
-  <!--    <div id="index-banner" class="parallax-container">
-      <div class="section no-pad-bot">
-        <div class="container">
-          <br><br>
-         <div class="row">
-          <div class="col-xs-6 col-sm-6 col-lg-6" >
-          <input type="text" placeholder="Select Category" class="search-box">
-          </div>
-          <div class="col-xs-6 col-sm-6 col-lg-6">
-            <input type="text" placeholder="Select Area" class="search-box"> 
-          </div>
-        </div>
-        <div class="row center">
-          <div class="col-xs-12 col-sm-12 col-lg-12" >
-          Or
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-lg-12" >
-          <input type="text" placeholder="Select Shop" class="search-box">
-          </div>
-        </div>
-      </div>
-      <div class="parallax"><img src="images/background2.jpg"></div>
-    </div>
-  </div> -->
  <div class="slider">
     <ul class="slides">
       <li>
-        <img src="images/welcome1.png" class="responsive-img "> 
+        <img src="https://placehold.it/550x350" class="responsive-img "> 
       </li>
       <li>
-        <img src="images/welcome2.jpg" class="responsive-img ">
+        <img src="https://placehold.it/550x350" class="responsive-img ">
       </li>      
     </ul>
   </div>
-
-  <div class="container-fluid">
+ <div class="detail-row row col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#home">Home</a></li>
+        <li class="tab col s3"><a href="#areas">Areas</a></li>
+        <li class="tab col s3 disabled"><a href="#offers">Offers</a></li>
+      </ul>
+  </div>
+  <div class="container-fluid" id="home">
     <div class="row no-gutter">
-        <div class="col-xs-6 col-sm-6 col-lg-6" >
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image" >
             <a ng-click="moveState('list')">
-                <img src="images/menscollection.png" class="img-responsive">
+                <img src="https://placehold.it/350x450" class="img-responsive">
             </a>
         </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
             <a ng-click="moveState('list')" >
-                <img src="images/womencollection.png" class="img-responsive">
+                <img src="https://placehold.it/350x450" class="img-responsive">
             </a>
         </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
             <a ng-click="moveState('list')" >
-                <img src="images/kidscollection.png" class="img-responsive">
+                <img src="https://placehold.it/350x450" class="img-responsive">
             </a>
         </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
             <a ng-click="moveState('list')" >
-                <img src="images/offer.jpg" class="img-responsive">
+                <img src="https://placehold.it/350x450" class="img-responsive">
+            </a>
+        </div>        
+    </div>
+</div>
+
+
+  <div class="container-fluid" id="areas">
+    <div class="row no-gutter">
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image" >
+            <a ng-click="moveState('list')">
+                <img src="https://placehold.it/350x450" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
+            <a ng-click="moveState('list')" >
+                <img src="https://placehold.it/350x450" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
+            <a ng-click="moveState('list')" >
+                <img src="https://placehold.it/350x450" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
+            <a ng-click="moveState('list')" >
+                <img src="https://placehold.it/350x450" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
+            <a ng-click="moveState('list')" >
+                <img src="https://placehold.it/350x450" class="img-responsive">
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image">
+            <a ng-click="moveState('list')" >
+                <img src="https://placehold.it/350x450" class="img-responsive">
             </a>
         </div>        
     </div>
@@ -92,3 +108,14 @@
     $(".dropdown-button").dropdown();
 </script>
 
+<style>
+.detail-row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.home-image{
+  border:1px solid white;
+}
+
+
+</style>

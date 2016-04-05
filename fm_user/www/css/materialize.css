@@ -8633,6 +8633,7 @@ a.waves-effect .waves-ripple {
   background-color: #292929;
   z-index: 999;
   will-change: opacity;
+  opacity:0.5!important;
 }
 
 .materialbox-caption {

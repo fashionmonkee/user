@@ -4,7 +4,14 @@
           <a ng-click="moveState('list')" ><i class="material-icons">arrow_back</i></a>
         </div>
     </nav>
-  <div class="detail-row row">
+    <div id="preloader_1" ng-show="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div> 
+  <div class="detail-row row" ng-show="!loading">
   <div class="col s12 m7">
     <div class="card small">
       <div class="card-image">
@@ -29,7 +36,7 @@
   </div>
 </div>
         
- <div class="detail-row row col s12">
+ <div class="detail-row row col s12" ng-show="!loading">
       <ul class="tabs">
         <li class="tab col s3"><a class="active" href="#general">General</a></li>
         <li class="tab col s3"><a href="#reviews">Reviews</a></li>
@@ -37,7 +44,7 @@
         <li class="tab col s3 disabled"><a href="#offers">Offers</a></li>
       </ul>
   </div>
-<div id="general" class="detail-row">
+<div id="general" class="detail-row" ng-show="!loading">
 <div class="col s12">
 <section>
 <h4 class="subheaders">Description</h4>
@@ -51,7 +58,7 @@
     <div class="row list-row">
         <div class="col-xs-4 col-sm-4 col-lg-4" ng-repeat="img in shop.images track by $index">
             <a href="" >
-                <img ng-src="{{img.image_url}}" class="materialboxed responsive-img " mat-zoom>
+                <img ng-src="{{img.image_url}}" class="materialboxed responsive-img " mat-zoom >
             </a>
         </div>
     </div>
