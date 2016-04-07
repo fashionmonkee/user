@@ -2,7 +2,9 @@
 
 angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$location) {
     $scope.loading=true;
-    $scope.filterData={areas:'',categories:'',sortBy:''};
+    $scope.filterData={areas:[],categories:[],sortBy:''};
+    $scope.filterData.areas[0]=($state.params.area)?$state.params.area:'';
+    $scope.filterData.categories[0]=($state.params.category)?parseInt($state.params.category):'';
     $scope.searchData='';
     $scope.moveState=function(state,id){
       $state.go(state,{data:id});
@@ -72,6 +74,8 @@ angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$
       $scope.getItems(query);
       $('.button-filter').sideNav('hide');
     };
+
+        $scope.advanceFilter();
 
 
   

@@ -12,14 +12,16 @@ angular.module('routerApp')
       if(!form.$valid){
         return;
       }
-      $auth.login($scope.user,{url:'http://10.0.0.139/login'})
+      $auth.login($scope.user,{url:'http://localhost/login'})
         .then(function(response) {
           localStorageService.set('loginData', response.data);
           $state.go('home');
           console.log('You have successfully signed in!');
         })
         .catch(function(error) {
-          console.log(error.data.message, error.status);
+          $scope.errorMsg=error.data;
+          var $toastContent = $('<strong>'+$scope.errorMsg+'</strong>');
+          Materialize.toast($toastContent, 5000)
         });
     };
 });

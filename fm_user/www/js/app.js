@@ -1,22 +1,4 @@
-/*
-'use strict';
-var userAgent = navigator.userAgent.toLowerCase();
-var gaplugin;
-var deviceId;
-if(true && (/(android)/.test(userAgent) || /(ipad|iphone|ipod)/.test(userAgent))) {
-  document.addEventListener('deviceready', function () {
-    deviceId = window.device.uuid;
-    angular.bootstrap(document, ['routerApp']);
-    document.addEventListener('backbutton', function () {}, false);
-  }, false);
-} else {
-  console.log('Bootstrapping routerApp for non-android devices');
-  setTimeout(function () {
-    deviceId = 'web';
-    angular.bootstrap(document, ['routerApp']);
-  }, 500);
-}
-*/
+
 
 var routerApp = angular.module('routerApp', ['ui.router','ngAnimate', 'satellizer' ,'geolocation', 'google-maps','ui.materialize','LocalStorageModule']);
 
@@ -36,7 +18,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             controller:'homeCtrl'
         })    
          .state('list', {
-            url: '/list',
+            url: '/list?category&area',
             templateUrl: 'list.html',
             controller:'listCtrl'
         }) 

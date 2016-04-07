@@ -7,8 +7,6 @@ angular.module('routerApp')
     $scope.starRating=0;
     $scope.comment='';
     $scope.editComment='';
-    $scope.mainCategories=[{id:'1',name:'Mens'},{id:'2',name:'Womens'},{id:'3',name:'Kids'}];
-    $scope.mainCategory=$scope.mainCategories[0];
     $scope.starRating='';
     $scope.loginData=localStorageService.get('loginData');
     $scope.shopId=$stateParams.id;
@@ -114,12 +112,23 @@ angular.module('routerApp')
         $scope.reviews=response.data;    
     });
     };
+
     
     $scope.setCategory=function(cat){
         $scope.mainCategory=cat;
-    }
+    };
   	$scope.getShop("shops");
     $scope.getReviews("reviews?shop_id="+$stateParams.id);
+
+
+    $scope.getCategory=function(){
+      var Api=new $api('mainCategory');
+      Api.list().then(function(response) {
+        $scope.mainCategories=response.data;
+        $scope.mainCategory=$scope.mainCategories[0];
+      });
+    };
+    $scope.getCategory();
     
   	
 
