@@ -20,8 +20,8 @@ angular.module('routerApp')
         })
         .catch(function(error) {
           $scope.errorMsg=error.data;
-          var $toastContent = $('<strong>'+$scope.errorMsg+'</strong>');
-          Materialize.toast($toastContent, 5000)
+          var $toastContent = $('<div class="col s12" style="margin-left:17%">'+$scope.errorMsg+'</div>');
+          Materialize.toast($toastContent, 5000);
         });
     };
 });

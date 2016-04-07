@@ -21,7 +21,7 @@ angular.module('routerApp')
         })
         .catch(function(response) {
           $scope.errorMsg=response.data;
-          var $toastContent = $('<strong>'+$scope.errorMsg+'</strong>');
+          var $toastContent = $('<div class="col s12" style="margin-left:17%">'+$scope.errorMsg+'</div>');
           Materialize.toast($toastContent, 5000);
         });
     };
