@@ -15,7 +15,17 @@
 <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="circle"  ng-style="getBackgroundStyle(user.profile)">
+        <div class="circle">
+          <img id="preview" ng-src="{{user.profile_url || 'images/user.png'}}" width="140" height="150" style="border-radius: 99em;">
+          <input id="chooseFile" type="file"  name="file"  class="hide">
+          <div style="margin-left: 36px;">
+             <a class="btn-floating waves-effect waves-light btn-small green">
+              <i class="large material-icons"  onclick="document.getElementById('chooseFile').click()" >add_a_photo</i>
+            </a>
+            <a class="btn-floating waves-effect waves-light btn-small red" >
+              <i ng-click="reset()" class="large material-icons" >delete</i>
+            </a>
+          </div>
         </div>        
       </div>
       <div class="row">
@@ -23,6 +33,7 @@
           <input id="name" type="text" class="validate" placeholder="Name" ng-model="user.name">
         </div>
       </div>
+
       <div class="row">
         <div class="input-field col s12">
           <input id="city" type="text" class="validate" placeholder="City" ng-model="user.city">
@@ -30,11 +41,11 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea" class="materialize-textarea" placeholder="About Urself" ng-model="user.urself"></textarea>
+          <textarea id="textarea" class="materialize-textarea" placeholder="About Urself" ng-model="user.description"></textarea>
         </div>
       </div>
        <div class="row" style="text-align:center;margin-top:20%">
-        <a class="waves-effect waves-light btn">Update</a>
+        <a class="waves-effect waves-light btn" ng-click="update()">Update</a>
       </div>
     </form>
   </div>

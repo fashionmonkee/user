@@ -12,9 +12,10 @@ angular.module('routerApp')
       if(!form.$valid){
         return;
       }
-      $auth.login($scope.user,{url:'http://localhost/login'})
+      $auth.login($scope.user,{url:'http://fashionmonkee.com/login'})
         .then(function(response) {
           localStorageService.set('loginData', response.data);
+           localStorageService.set('city', response.data.city);
           $state.go('home');
           console.log('You have successfully signed in!');
         })

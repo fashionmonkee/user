@@ -8633,6 +8633,7 @@ a.waves-effect .waves-ripple {
   background-color: #292929;
   z-index: 999;
   will-change: opacity;
+  opacity:0.5!important;
 }
 
 .materialbox-caption {
@@ -9470,7 +9471,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 .select-wrapper + label {
   position: absolute;
   top: -14px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 select {

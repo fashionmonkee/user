@@ -19,6 +19,10 @@
                         {
                             "xml": "<feature name=\"CallNumber\"><param name=\"android-package\" value=\"mx.ferreyra.callnumber.CFCallNumber\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -37,6 +41,10 @@
                         {
                             "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -51,6 +59,9 @@
             "PACKAGE_NAME": "com.fadindia.malls"
         },
         "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.fadindia.malls"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.fadindia.malls"
         }
     },
@@ -77,11 +88,29 @@
             "clobbers": [
                 "call"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-network-information/www/network.js",
+            "id": "cordova-plugin-network-information.network",
+            "pluginId": "cordova-plugin-network-information",
+            "clobbers": [
+                "navigator.connection",
+                "navigator.network.connection"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+            "id": "cordova-plugin-network-information.Connection",
+            "pluginId": "cordova-plugin-network-information",
+            "clobbers": [
+                "Connection"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.0",
         "cordova-plugin-x-socialsharing": "5.0.10",
-        "mx.ferreyra.callnumber": "0.0.2"
+        "mx.ferreyra.callnumber": "0.0.2",
+        "cordova-plugin-network-information": "1.2.0"
     }
 }

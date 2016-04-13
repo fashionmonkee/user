@@ -4,7 +4,8 @@
 angular.module('routerApp').controller('mainCtrl', function($scope,$rootScope,$auth) {
 		$scope.isAuthenticated = function() {
 	      return $auth.isAuthenticated();
-	    }; 	
+	    };
+      document.addEventListener('backbutton', function () {}, false);
   		$rootScope.$on('$stateChangeSuccess', 
 			function(event, toState, toParams, fromState, fromParams){
 				$rootScope.fromState=fromState;

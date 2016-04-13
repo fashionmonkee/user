@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$location) {
+angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$location,localStorageService) {
     $scope.loading=true;
     $scope.filterData={areas:[],categories:[],sortBy:''};
     $scope.filterData.areas[0]=($state.params.area)?$state.params.area:'';
@@ -14,20 +14,28 @@ angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$
     };
 
     $scope.getAreas=function(){
-      var getAreas=new $api('areas');
+      var getAreas=new $api('areas?city='+localStorageService.get('city'));
       getAreas.list().then(function(response) {
         $scope.areas=response.data; 
-         console.log($scope.areas);      
     });
     };
     $scope.getAreas();
+
+     $scope.getCategory=function(){
+      var Api=new $api('mainCategory');
+      Api.list().then(function(response) {
+        $scope.mainCategory=response.data;
+      });
+    };
+
+    $scope.getCategory();
+
 
     $scope.getItems=function(item){
       var getItems=new $api(item);
       getItems.list().then(function(response) {
         $scope.shops=response.data;
         $scope.loading=false;
-        console.log($scope.shops);
     });
     };
     $scope.getItems("shops");
@@ -60,9 +68,9 @@ angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$
 
     $scope.advanceFilter=function(){
       var areas,categories,sortBy,query;
-      query='shops?'
+      query='shops?city='+localStorageService.get('city');
       if($scope.filterData.areas.length){
-        query+="areas="+$scope.filterData.areas.toString();
+        query+="&areas="+$scope.filterData.areas.toString();
       }
       if($scope.filterData.categories.length){
         query+="&categories="+$scope.filterData.categories.toString();
@@ -70,13 +78,10 @@ angular.module('routerApp').controller('listCtrl', function($scope,$api,$state,$
       if($scope.filterData.sortBy.length){
         query+="&sortBy="+$scope.filterData.sortBy;
       }
-      console.log(query);
       $scope.getItems(query);
       $('.button-filter').sideNav('hide');
     };
 
-        $scope.advanceFilter();
-
-
+      $scope.advanceFilter();
   
 });

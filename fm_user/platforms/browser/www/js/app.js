@@ -1,6 +1,6 @@
 
 
-var routerApp = angular.module('routerApp', ['ui.router','ngAnimate', 'satellizer' ,'geolocation', 'google-maps','ui.materialize']);
+var routerApp = angular.module('routerApp', ['ui.router','ngAnimate', 'satellizer' ,'geolocation', 'google-maps','ui.materialize','LocalStorageModule']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     
@@ -18,12 +18,12 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             controller:'homeCtrl'
         })    
          .state('list', {
-            url: '/list',
+            url: '/list?category&area',
             templateUrl: 'list.html',
             controller:'listCtrl'
         }) 
          .state('detail', {
-            url: '/detail',
+            url: '/detail/:id',
             templateUrl: 'detail.html',
             params : { data: null, },
             controller:'detailCtrl'
@@ -49,11 +49,21 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'signup.html',
             controller:'signupCtrl'
         })
+          .state('forgotPassword', {
+            url: '/forgotPassword',
+            templateUrl: 'forgotPassword.html',
+            controller:'forgotPasswordCtrl'
+        })
          .state('logout', {
             url: '/logout',
             template: null,
             controller: 'LogoutCtrl'
       });
         
+});
+
+routerApp.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('fm');
 });
 

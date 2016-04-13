@@ -2,7 +2,7 @@
 
 
 angular.module('routerApp')
-  .controller('loginCtrl', function($scope,$state,$auth,commonData,$rootScope) {
+  .controller('loginCtrl', function($scope,$state,$auth,commonData,$rootScope,localStorageService) {
   	$scope.moveState=function(state,id){
   		$state.go(state,{data:id});
   	};
@@ -12,14 +12,17 @@ angular.module('routerApp')
       if(!form.$valid){
         return;
       }
-      $auth.login($scope.user,{url:'http://10.0.0.139:5000/login'})
+      $auth.login($scope.user,{url:'http://192.168.1.4/login'})
         .then(function(response) {
-          commonData.userId=response.data.userId;
-          $state.go($rootScope.fromState,{data:$rootScope.fromParams.data});
+          localStorageService.set('loginData', response.data);
+           localStorageService.set('city', response.data.city);
+          $state.go('home');
           console.log('You have successfully signed in!');
         })
         .catch(function(error) {
-          console.log(error.data.message, error.status);
+          $scope.errorMsg=error.data;
+          var $toastContent = $('<div class="col s12" style="margin-left:17%">'+$scope.errorMsg+'</div>');
+          Materialize.toast($toastContent, 5000);
         });
     };
 });

@@ -6,12 +6,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/home'); 
     $stateProvider
-
-        .state('main', {
-            url: '/main',
-            templateUrl: null,
-            controller:'mainCtrl'
-        })
         .state('home', {
             url: '/home',
             templateUrl: 'home.html',

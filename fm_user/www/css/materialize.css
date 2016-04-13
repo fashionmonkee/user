@@ -9471,7 +9471,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
 .select-wrapper + label {
   position: absolute;
   top: -14px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 select {

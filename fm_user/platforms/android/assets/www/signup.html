@@ -7,9 +7,9 @@
 
 <div class="container">
   <div id="login" class="signin-card">
-  <div class="logo-image">
+  <!-- <div class="logo-image">
   <img src="images/logo.png" alt="Logo" title="Logo" width="138">
-  </div>
+  </div> -->
   <form class="col s12" method="post" ng-submit="signup(signupForm)" name="signupForm" novalidate>
     <div class="row">
         <div class="input-field col s12">
@@ -41,17 +41,13 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="city" type="text"  name="city" ng-model="user.city"  required>
-          <label for="city">City</label>
+        <select id="city" name="city" ng-model="user.city"  required material-select watch>
+            <option ng-repeat="city in cities">{{city.name}}</option>
+        </select>
+         <label for="city">Select City</label>
           <span class="error-msg" ng-show="signupForm.city.$invalid && submitted"> This is required </span>
         </div>
       </div>
-    <div id="form-login-remember" class="form-group">
-      <div class="checkbox checkbox-default">       
-          <input id="remember" type="checkbox" value="yes" alt="Remember me" class="">
-          <label for="remember">&nbsp&nbspRemember me</label>      
-      </div>
-    </div>
     <div>
       <button class="btn btn-block ripple-effect" type="submit" name="Submit" alt="sign up" >Sign up</button>  
 	  </div>

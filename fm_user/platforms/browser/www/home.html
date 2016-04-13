@@ -3,14 +3,10 @@
           <a id="logo-container" href="#" class="brand-logo">Home
           </a>
           <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!" style="font-size:10px;">Chennai</a></li>
-             <li class="divider"></li>
-           <!--  <li><a href="#!" style="font-size:10px;">Bangalore</a></li>
-            <li class="divider"></li>
-            <li><a href="#!" style="font-size:10px;">Hyderabad</a></li> -->
+            <li ng-repeat="city in cities"><a href="#!" style="font-size:10px;" ng-click="changeCity(city)">{{city.name}}</a></li>
           </ul>
           <ul class="right" style="margin-right: -30px;">
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Chennai<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{currentCity}}<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
           <ul id="nav-mobile" class="side-nav">
             <li><a href="" ng-click="moveState('home')">Home</a></li>
@@ -21,88 +17,38 @@
           <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
   </nav>
-  <!--    <div id="index-banner" class="parallax-container">
-      <div class="section no-pad-bot">
-        <div class="container">
-          <br><br>
-         <div class="row">
-          <div class="col-xs-6 col-sm-6 col-lg-6" >
-          <input type="text" placeholder="Select Category" class="search-box">
-          </div>
-          <div class="col-xs-6 col-sm-6 col-lg-6">
-            <input type="text" placeholder="Select Area" class="search-box"> 
-          </div>
-        </div>
-        <div class="row center">
-          <div class="col-xs-12 col-sm-12 col-lg-12" >
-          Or
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-lg-12" >
-          <input type="text" placeholder="Select Shop" class="search-box">
-          </div>
-        </div>
-      </div>
-      <div class="parallax"><img src="images/background2.jpg"></div>
-    </div>
-  </div> -->
  <div class="slider">
     <ul class="slides">
-      <li>
-        <img src="images/background1.jpg"> 
-      </li>
-      <li>
-        <img src="images/background2.jpg">
-      </li>
-      <li>
-        <img src="images/background3.jpg">
-      </li>  
+      <li ng-repeat="banner in banners">
+        <img ng-src="{{banner.url}}" class="responsive-img "> 
+      </li>      
     </ul>
   </div>
-
-  <div class="container-fluid">
+ <div class="detail-row row col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#home">Home</a></li>
+        <li class="tab col s3"><a href="#areas">Areas</a></li>
+        <li class="tab col s3 disabled"><a href="#offers">Offers</a></li>
+      </ul>
+  </div>
+  <div class="container-fluid" id="home">
     <div class="row no-gutter">
-        <div class="col-xs-6 col-sm-6 col-lg-6" >
-            <a ng-click="moveState('list')">
-                <img src="images/category1.png" class="img-responsive">
+        <div ng-repeat="main in mainCategory track by main.id" class="col-xs-6 col-sm-6 col-lg-6 home-image">
+            <a ng-href="#/list?category={{main.id}}">
+                <img ng-src="{{main.images}}" class="img-responsive">
             </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category2.png" class="img-responsive">
+        </div>        
+    </div>
+</div>
+
+
+  <div class="container-fluid" id="areas">
+    <div class="row no-gutter">
+        <div class="col-xs-6 col-sm-6 col-lg-6 home-image" ng-repeat="area in areas">
+            <a ng-href="#/list?area={{area.name}}">
+                <img ng-src="{{area.images}}" class="img-responsive">
             </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category2.png" class="img-responsive">
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category1.png" class="img-responsive">
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category1.png" class="img-responsive">
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category2.png" class="img-responsive">
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category2.png" class="img-responsive">
-            </a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6">
-            <a href="#" >
-                <img src="images/category1.png" class="img-responsive">
-            </a>
-        </div>
+        </div>        
     </div>
 </div>
 <script>
@@ -115,3 +61,12 @@
     $(".dropdown-button").dropdown();
 </script>
 
+<style>
+.detail-row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.home-image{
+  border:1px solid white;
+}
+</style>

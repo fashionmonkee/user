@@ -1,7 +1,7 @@
  <nav class="red" role="navigation">
         <div class="nav-wrapper container">
           <a id="logo-container" href="" class="brand-logo">Login</a>
-          <a ng-click="moveState(fromState.name)" ><i class="large material-icons">arrow_back</i></a>
+          <a href="javascript:history.back()" ><i class="large material-icons">arrow_back</i></a>
         </div>
   </nav>
 
@@ -25,18 +25,15 @@
           <span class="error-msg" ng-show="loginForm.password.$invalid && submitted"> This is required </span>
         </div>
       </div>
-    <div id="form-login-remember" class="form-group">
-      <div class="checkbox checkbox-default">       
-          <input id="remember" type="checkbox" value="yes" alt="Remember me" class="">
-          <label for="remember">&nbsp&nbspRemember me</label>      
-      </div>
-    </div>
     <div>
       <button class="btn btn-block ripple-effect"  type="submit" name="Submit" alt="sign in">Sign in</button>  
 	  </div>
     <p class="text-center text-muted">
-            <small>Don't have an account yet? <a href="#/signup">Sign up</a></small>
-          </p>
+            <small>Don't have an account yet?</small> <a href="#/signup">Sign up</a>
+    </p>
+    <p class="text-center text-muted">
+            <a href="#/forgotPassword">Forgot Password</a>
+    </p>
     </div>
   </form>
 </div>

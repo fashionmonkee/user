@@ -52,6 +52,9 @@
         },
         "mx.ferreyra.callnumber": {
             "PACKAGE_NAME": "com.fadindia.malls"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.fadindia.malls"
         }
     },
     "dependent_plugins": {}

@@ -34,17 +34,18 @@
             </div>
             <div class="filter-content">
               <h4>Areas</h4>
+              <input type="text" ng-model="areaSearch" placeholder="Search Area">
                 <form action="#">
-                <p ng-repeat="area in areas track by $index">
+                <p ng-repeat="area in areas|filter:areaSearch track by area.id">
                   <input type="checkbox" id="{{area.name}}" data-checklist-model="filterData.areas" data-checklist-value="area.name"/>
                   <label for="{{area.name}}">{{area.name}}</label>
                 </p>
               </form>
             </div>
-            <div class="filter-content" ng-init="categories=[{id:1,name:'Mens'},{id:2,name:'Womens'},{id:3,name:'Kids'}]">
+            <div class="filter-content">
               <h4>Category</h4>
               <form action="#">
-                <p ng-repeat="category in categories track by $index">
+                <p ng-repeat="category in mainCategory track by $index" ng-hide="category.id==='4'">
                   <input type="checkbox" id="{{category.name}}"  data-checklist-model="filterData.categories" data-checklist-value="category.id"/>
                   <label for="{{category.name}}">{{category.name}}</label>
                 </p>
@@ -161,7 +162,10 @@
   padding: 15px;
 }
 .filter-content{
-  padding:5px;
+      padding: 5px;
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 

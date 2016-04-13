@@ -2,27 +2,50 @@
 
 
 angular.module('routerApp')
-  .controller('homeCtrl', function($scope,$state,$api) {
+  .controller('homeCtrl', function($scope,$state,$api,localStorageService) {
+    $scope.loading=true;
   	$scope.moveState=function(state){
   		$('.button-collapse').sideNav('hide');
   		$state.go(state);
   	};
 
-  	$scope.getAreas=function(){
-      var Api=new $api('areas');
+    $scope.getCities=function(){
+      var Api=new $api('cities');
+      Api.list().then(function(response) {
+        $scope.cities=response.data;
+        if(angular.isDefined(localStorageService.get('city')) && localStorageService.get('city') !== null){
+          $scope.currentCity=localStorageService.get('city');
+          $scope.getAreas($scope.currentCity);
+          $scope.getBanners($scope.currentCity);
+        }else{
+          $scope.currentCity=response.data[0].name;
+          localStorageService.set('city',response.data[0].name);
+          $scope.getAreas($scope.currentCity);
+          $scope.getBanners($scope.currentCity);
+        }        
+      });
+    };
+
+  	$scope.getAreas=function(city){
+      var Api=new $api('areas?city='+city);
       Api.list().then(function(response) {
         $scope.areas=response.data;
     });
   	};
-  	$scope.getCities=function(){
-      var Api=new $api('cities');
+
+    $scope.getBanners=function(city){
+      var Api=new $api('banners?city='+city);
       Api.list().then(function(response) {
-        $scope.cities=response.data;
-        $scope.currentCity=response.data[0];
+        $scope.banners=response.data;
+        $scope.loading=false;
     });
-  };
+    };
+  	
   	$scope.changeCity=function(data){
-  		$scope.currentCity=data;
+      localStorageService.set('city',data.name);
+  		$scope.currentCity=data.name;
+      $scope.getAreas($scope.currentCity);
+      $scope.getBanners($scope.currentCity);
   	};
 
      $scope.getCategory=function(){
@@ -32,8 +55,6 @@ angular.module('routerApp')
       });
   	};
 
-      $scope.getAreas();
       $scope.getCategory();
       $scope.getCities();
-
 });

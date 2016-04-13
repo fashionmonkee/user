@@ -7,14 +7,24 @@ angular.module('routerApp')
     $scope.moveState=function(state){
   		$state.go(state);
   	};
+
+    $scope.getCities=function(){
+      var Api=new $api('cities');
+      Api.list().then(function(response) {
+        $scope.cities=response.data;    
+      });
+    };
+
+    $scope.getCities();
   	$scope.signup = function(form) {
       $scope.submitted=true;
       if(!form.$valid){
         return;
       }
       $scope.user.role_id=2;
-      $auth.signup($scope.user,{url:'http://localhost/register'}).then(function(response) {
+      $auth.signup($scope.user,{url:'http://fashionmonkee.com/register'}).then(function(response) {
           localStorageService.set('loginData', response.data);
+          localStorageService.set('city', response.data.city);
           $auth.setToken(response);
           $state.go('home');
           console.log('You have successfully created a new account and have been signed-in');
