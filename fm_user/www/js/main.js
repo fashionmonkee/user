@@ -37,8 +37,7 @@ angular.module('routerApp').controller('mainCtrl', function($scope,$rootScope,$a
  * License: MIT http://opensource.org/licenses/MIT
  */
 
-angular.module('routerApp')
-.directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
+angular.module('routerApp').directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
   // contains
   function contains(arr, item, comparator) {
     if (angular.isArray(arr)) {

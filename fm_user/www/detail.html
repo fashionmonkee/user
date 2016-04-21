@@ -1,17 +1,20 @@
- <nav class="red" role="navigation">
+<nav class="red" role="navigation">
         <div class="nav-wrapper container">
           <a id="logo-container" href="#" class="brand-logo">{{shop.name}}</a>
           <a ng-click="moveState('list')" ><i class="material-icons">arrow_back</i></a>
         </div>
-    </nav>
-    <div id="preloader_1" ng-show="loading">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div> 
-  <div class="detail-row row" ng-show="!loading">
+</nav>
+
+<div id="preloader_1" ng-show="loading">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div> 
+
+
+<div class="detail-row row" ng-show="!loading">
   <div class="col s12 m7">
     <div class="card small">
       <div class="card-image">
@@ -35,15 +38,18 @@
     </div>
   </div>
 </div>
+
+
         
- <div class="detail-row row col s12" ng-show="!loading">
-      <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="#general">General</a></li>
-        <li class="tab col s3"><a href="#reviews">Reviews</a></li>
-        <li class="tab col s3"><a  href="#catalog">Catalog</a></li>
-        <li class="tab col s3"><a href="#offers">Offers</a></li>
+<div class="detail-row row col s12" ng-show="!loading">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#general">General</a></li>
+      <li class="tab col s3"><a href="#reviews">Reviews</a></li>
+      <li class="tab col s3"><a  href="#catalog">Catalog</a></li>
+      <li class="tab col s3 disabled"><a href="#offers">Offers</a></li>
       </ul>
-  </div>
+</div>
+
 <div id="general" class="detail-row" ng-show="!loading">
 <div class="col s12">
 <section>
@@ -63,58 +69,45 @@
         </div>
     </div>
 </div>
-<!-- <h4 class="subheaders">Branches</h4>
-<div class="container-fluid">
-<ul class="collection with-header">
-    <li class="collection-item avatar" ng-repeat="branch in shop.branches">
-      <i class="material-icons circle green">room</i>
-      <span class="title"><b>{{branch.name}}</b></span>
-      <p>{{branch.address1}}{{","+branch.city}}{{"-"+branch.pin}}</p>
-      <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-    </li>
-</ul>
-</div> -->
 </section>
 </div>
 </div>
 
 
 <div id="reviews" class="detail-row row">
-<div class="col s12">
-<section>
- <div class="twt-wrapper">
-    <div class="panel panel-info">
-      <div class="panel-body">
-      <textarea class="form-control" placeholder="Enter your comments..." rows="3" ng-model="comment" ng-focus="!isAuthenticated() ? moveState('login') :''"></textarea>
+  <div class="col s12">
+  <section>
+    <div class="twt-wrapper">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <textarea class="form-control" placeholder="Enter your comments..." rows="3" ng-model="comment" ng-focus="!isAuthenticated() ? moveState('login') :''"></textarea>
             <br/>
             <a class="waves-effect waves-light btn" ng-disabled="comment.length<1" ng-click="postComment()"><i class="material-icons right">share</i>Share</a>
-                  <div class="clearfix"></div>
-                    <hr />
+            <div class="clearfix"></div><hr/>
             <div class="media-list">
                 <div class="media" ng-repeat="review in reviews track by $index">
-                      <a href="" class="pull-left">
-                          <img ng-src="{{review.profile_url || 'images/user.png'}}" alt="" class="img-circle">
-                      </a>
-                      <div class="media-body">
-                        <span class="text-muted pull-right">
-                            <small class="text-muted">{{review.created_at}}</small>
-                        </span>
-                        <strong class="text-success">@ {{review.user_name}}</strong>
-                        <p style="word-wrap: break-word;">{{review.reviews}}</p>
-                         <p ng-show="loginData.id === review.user_id">
-                          <a  href="" class="btn-floating btn-tiny waves-effect waves-light green " ng-click="editComments(review)"><i class="tiny material-icons">edit</i></a>
-                          <a class="btn-floating btn-tiny waves-effect waves-light red" ng-click="deleteReview(review.id)"><i class="tiny material-icons">delete</i></a>                        
-                         </p>
-                        </div>                        
-                  </div>
-                </div>                            
+                  <a href="" class="pull-left">
+                    <img ng-src="{{review.profile_url || 'images/user.png'}}" alt="" class="img-circle">
+                  </a>
+                  <div class="media-body">
+                      <span class="text-muted pull-right">
+                        <small class="text-muted">{{review.created_at}}</small>
+                      </span>
+                      <strong class="text-success">@ {{review.user_name}}</strong>
+                      <p style="word-wrap: break-word;">{{review.reviews}}</p>
+                      <p ng-show="loginData.id === review.user_id">
+                        <a  href="" class="btn-floating btn-tiny waves-effect waves-light green " ng-click="editComments(review)"><i class="tiny material-icons">edit</i></a>
+                        <a class="btn-floating btn-tiny waves-effect waves-light red" ng-click="deleteReview(review.id)"><i class="tiny material-icons">delete</i></a>   
+                      </p>
+                  </div>                        
+                </div>
+            </div>                            
         </div>
       </div>
-      </div>
-
-    </section>
-   </div> 
- </div>
+    </div>
+  </section>
+  </div> 
+</div>
 
 <div id="catalog" class="detail-row row">
     <div class="col s12">
@@ -132,81 +125,8 @@
     </div>
 </div>
 
-<div id="offers" class="detail-row row">
-   <div class="row">
 
-    <div class="col-lg-12">
-        <h1 class="page-header">Thumbnail Gallery</h1>
-    
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="" data-image-id=""  data-title="This is my title" data-caption="Some lovely red flowers" data-image="http://onelive.us/wp-content/uploads/2014/08/flower-delivery-online.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="http://onelive.us/wp-content/uploads/2014/08/flower-delivery-online.jpg" alt="Short alt text">
-            </a>
-        </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="" data-image-id="" data-toggle="modal" data-title="The car i dream about" data-caption="If you sponsor me, I can drive this car" data-image="http://www.picturesnew.com/media/images/car-image.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="http://www.picturesnew.com/media/images/car-image.jpg" alt="A alt text">
-            </a>
-        </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="" data-image-id="" ng-click="openModal('offer-modal')" data-title="Im so nice" data-caption="And if there is money left, my girlfriend will receive this car" data-image="http://upload.wikimedia.org/wikipedia/commons/7/78/1997_Fiat_Panda.JPG" data-target="#image-gallery">
-                <img class="img-responsive" src="http://upload.wikimedia.org/wikipedia/commons/7/78/1997_Fiat_Panda.JPG" alt="Another alt text">
-            </a>
-        </div>
-</div>
-
-
-<!-- <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="image-gallery-title"></h4>
-            </div>
-            <div class="modal-body">
-                <img id="image-gallery-image" class="img-responsive" src="">
-            </div>
-            <div class="modal-footer">
-
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-primary" id="show-previous-image">Previous</button>
-                </div>
-
-                <div class="col-md-8 text-justify" id="image-gallery-caption">
-                    This text will be overwritten by jQuery
-                </div>
-
-                <div class="col-md-2">
-                    <button type="button" id="show-next-image" class="btn btn-default">Next</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
- --><!-- Modal Structure -->
   <!-- Modal Structure -->
-  <div id="offer-modal" class="modal">
-    <div class="modal-content">
-      <h4>Offers</h4>
-     <img id="image-gallery-image" class="img-responsive" src="">
-          <div class="col-md-2">
-                    <button type="button" class="btn btn-primary" id="show-previous-image">Previous</button>
-                </div>
-
-                <div class="col-md-8 text-justify" id="image-gallery-caption">
-                    This text will be overwritten by jQuery
-                </div>
-
-                <div class="col-md-2">
-                    <button type="button" id="show-next-image" class="btn btn-default">Next</button>
-                </div>
-    </div>
-    <div class="modal-footer">
-    
-           
-    </div>
-  </div>
   <div id="rate-modal" class="modal bottom-sheet">
     <div class="modal-content">
       <h4>Rating</h4>
@@ -232,73 +152,13 @@
       <a class="waves-effect waves-light btn" ng-disabled="editComment.reviews.length<1" ng-click="postComment('edit')"><i class="material-icons right">share</i>Share</a>
     </div>
   </div>
+
+
+
 <script>
     $('.button-collapse').sideNav();
     $('ul.tabs').tabs();
     $('.collapsible').collapsible({
        accordion : false
      });
-
-    $(document).ready(function(){
-
-    loadGallery(true, 'a.thumbnail');
-
-    //This function disables buttons when needed
-    function disableButtons(counter_max, counter_current){
-        $('#show-previous-image, #show-next-image').show();
-        if(counter_max == counter_current){
-            $('#show-next-image').hide();
-        } else if (counter_current == 1){
-            $('#show-previous-image').hide();
-        }
-    }
-
-    /**
-     *
-     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
-     * @param setClickAttr  Sets the attribute for the click handler.
-     */
-
-    function loadGallery(setIDs, setClickAttr){
-        var current_image,
-            selector,
-            counter = 0;
-
-        $('#show-next-image, #show-previous-image').click(function(){
-            if($(this).attr('id') == 'show-previous-image'){
-                current_image--;
-            } else {
-                current_image++;
-            }
-
-            selector = $('[data-image-id="' + current_image + '"]');
-            updateGallery(selector);
-        });
-
-        function updateGallery(selector) {
-            var $sel = selector;
-            current_image = $sel.data('image-id');
-            $('#image-gallery-caption').text($sel.data('caption'));
-            $('#image-gallery-title').text($sel.data('title'));
-            $('#image-gallery-image').attr('src', $sel.data('image'));
-            disableButtons(counter, $sel.data('image-id'));
-        }
-
-        if(setIDs == true){
-            $('[data-image-id]').each(function(){
-                counter++;
-                $(this).attr('data-image-id',counter);
-            });
-        }
-        $(setClickAttr).on('click',function(){
-            updateGallery($(this));
-        });
-    }
-});
 </script>
-<style>
-.detail-row{
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-}
-</style>

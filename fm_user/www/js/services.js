@@ -35,12 +35,3 @@ angular.module('routerApp').service('$api', function($http, $q) {
   };
   return $api;
 });
-
-
-angular.module('routerApp').service('commonData', ['$http', function ($http) {
-    
-    this.userId='';
-    this.userName='';
-    this.city='';
-
-}]);
